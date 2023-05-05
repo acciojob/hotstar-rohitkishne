@@ -27,7 +27,6 @@ public class WebSeriesService {
         //Dont forget to save the production and webseries Repo
 
         WebSeries webSeries = webSeriesRepository.findBySeriesName(webSeriesEntryDto.getSeriesName());
-        String seriesName = webSeriesEntryDto.getSeriesName();
         if(webSeries != null)
         {
             throw new Exception("Series is already present");
@@ -44,6 +43,8 @@ public class WebSeriesService {
 
         webSeries.setProductionHouse(productionHouse);
 
+        WebSeries savedWebseries = webSeriesRepository.save(webSeries);
+
         List<WebSeries> webSeriesList = productionHouse.getWebSeriesList();
         double totalRating = 0;
         for(WebSeries webSerieses : webSeriesList)
@@ -59,7 +60,7 @@ public class WebSeriesService {
 
         productionHouseRepository.save(productionHouse);
 
-        return null;
+        return savedWebseries.getId();
     }
 
 }
