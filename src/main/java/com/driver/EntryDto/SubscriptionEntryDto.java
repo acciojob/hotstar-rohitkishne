@@ -2,6 +2,9 @@ package com.driver.EntryDto;
 
 import com.driver.model.SubscriptionType;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 
 public class SubscriptionEntryDto {
 
